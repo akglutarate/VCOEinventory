@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
     
+    before_action :set_item, only: [:edit, :update, :show, :destroy]
+    
+    
     def index
         @items = Item.all
     end
@@ -19,13 +22,11 @@ class ItemsController < ApplicationController
     end
     
     def edit
-        @item = Item.find(params[:id])
     end
     
     def update
-        @item = Item.find(params[:id])
         if @item.update(item_params)
-           flash[:success] = "You have successfully update #{@item.title}."
+           flash[:success] = "You have successfully updated #{@item.title}."
            redirect_to item_path(@item)
         else
             render 'edit'
@@ -33,11 +34,20 @@ class ItemsController < ApplicationController
     end
     
     def show
-        @item = Item.find(params[:id])
+    end
+    
+    def destroy
+        @item.destroy
+        flash[:success] = 'The item has been deleted.'
+        redirect_to items_path
     end
     
     
     private
+        def set_item
+            @item = Item.find(params[:id])
+        end
+    
         def item_params
             params.require(:item).permit(:title, :owner_location)
         end

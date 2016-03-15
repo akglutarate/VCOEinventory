@@ -5,6 +5,13 @@
         <%= f.label :title %>
       </div>
       <div class="col-sm-6">
+        <% if @item.errors[:title].any? %>
+          <ul class="error">
+            <% @item.errors[:title].each do |error| %>
+              <li>*Title <%= error %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= f.text_field :title, class: "form-control", placeholder: "Enter an item name", autofocus: true %>
       </div>
     </div>
@@ -13,6 +20,13 @@
         <%= f.label :owner_location %>
       </div>
       <div class="col-sm-6">
+        <% if @item.errors[:owner_location].any? %>
+          <ul class="error">
+            <% @item.errors[:owner_location].each do |error| %>
+              <li>*Location <%= error %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= f.text_field :owner_location, class: "form-control", placeholder: "Enter a home location" %>
       </div>
     </div>
