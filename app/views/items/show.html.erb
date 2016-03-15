@@ -1,0 +1,33 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel panel-default col-sm-7 col-sm-offset-1">
+      <div class="panel-body">
+        <h1 class="left"><%= @item.title %></h1>
+        <div class="dropdown pull-right">
+          <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-cog"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Edit Item', edit_item_path(@item) %></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Delete Item</a></li>
+          </ul>
+        </div>
+        <br class="clear" />
+        <p><%= @item.owner_location %></p>
+      </div>
+    </div>
+    
+    <div class="panel panel-default col-sm-3 side">
+      <div class="panel-body">
+        <button type="button" class="btn btn-success borrow">Borrow <span class="glyphicon glyphicon-ok"></span></button>
+        <br /><br />
+        <button type="button" class="btn btn-warning borrow">Return <span class="glyphicon glyphicon-arrow-left"></span></button>
+        <hr />
+        <p>Lent to Jimmy 4 days ago.</p>
+      </div>
+    </div>
+    
+  </div>
+</div>

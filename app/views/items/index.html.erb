@@ -1,0 +1,26 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <% @items.each do |item| %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h2 class="left"><%= link_to item.title, item_path(item) %></h2>
+              <div class="dropdown pull-right">
+                <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
+                  <span class="glyphicon glyphicon-cog"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Edit Item', edit_item_path(item) %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Delete Item</a></li>
+                </ul>
+              </div>
+              <hr class="clear" />
+              <p><%= item.owner_location %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
