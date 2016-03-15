@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel col-sm-7 col-sm-offset-1">
+      <div class="panel-body">
+        <h1><%= @user.username %></h1>
+        <p><%= @user.email %></p>
+        <hr />
+        <ul class="user_items">
+          <% @user.items.each do |item| %>
+            <li>
+              <div class="dropdown pull-right">
+                <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
+                  Edit <span class="glyphicon glyphicon-cog"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Edit #{item.title}", edit_item_path(item) %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to "Delete #{item.title}", item_path(item), method: :delete, data: { confirm: "Are you sure you want to delete #{item.title}?" } %></li>
+                </ul>
+              </div>
+              <br class="clear" />
+            </li>
+            <li class="well">
+              <div class="left"><%= link_to item.title, item_path(item) %> - <%= item.owner_location %></div>
+              <br class="clear" />
+            </li>
+          <% end %>  
+        </ul>
+      </div>
+    </div>
+    
+    <div class="panel panel-default col-sm-3 side">
+      <div class="panel-body">
+        <% if @user.items.any? %>
+          <p>You are currently borrowing: </p>
+          <ul class="currently_borrowing">
+            <li><%= link_to @user.items.first.title, item_path(@user.items.first) %></li>
+            <li><%= link_to @user.items.second.title, item_path(@user.items.first) %></li>
+            <li><%= link_to @user.items.third.title, item_path(@user.items.first) %></li>
+            <li><%= link_to @user.items.fourth.title, item_path(@user.items.first) %></li>
+          </ul>
+        <% else %>
+          <p>You are not currently borrowing anything.</p>
+        <% end %>    
+      </div>
+    </div>
+    
+  </div>
+</div>

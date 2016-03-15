@@ -1,18 +1,23 @@
 <div class="container-fluid top">
   <div id="top">
+    <%= link_to image_tag('/images/VCOELogo_sm.png'), root_path %>
+    
     <div class="user_greeting">
-        <ul class="user_dropdown right">
-          <li class="dropdown pull-right">
-            <a href="#" class="dropdown-toggle user_settings" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="glyphicon glyphicon-cog"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">View Profile</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>
-      <span class="hello right">Hello, Wilson!</span>
-      <span class="glyphicon glyphicon-user greeting"></span>
+      <ul class="user_dropdown right">
+        <li class="dropdown pull-right">
+          <a href="#" class="dropdown-toggle user_settings" data-toggle="dropdown" role="button">User Settings <span class="glyphicon glyphicon-cog"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'View Profile', user_path(User.first) %></li>
+            <li><%= link_to 'Edit Profile', edit_user_path(User.first) %></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Sign Out</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="hello right">
+        <span class="salud right"> Hello, <%= User.first.username %>!</span>
+        <span class="glyphicon glyphicon-user right greeting"></span>
+      </div>
     </div>
   </div>
 </div>
@@ -33,6 +38,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'View All Items', items_path %></li>
+        <li><%= link_to 'View All Users', users_path %></li>
         <li><%= link_to 'Create New Item', new_item_path %></li>
       </ul>
       

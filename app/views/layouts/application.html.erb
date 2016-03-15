@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>App</title>
+  <title>VCOE Inventory Control</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,6 +11,8 @@
 <%= render 'common/navigation' %>
 
 <div id="main_content">
+  <%= render 'common/messages' %>
+  
   <%= yield %>
 </div>
 
