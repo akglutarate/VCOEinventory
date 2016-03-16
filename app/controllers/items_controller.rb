@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.user = User.first
+    @item.user = current_user
     if @item.save
      flash[:success] = 'You have successfully created a new item.'
      redirect_to item_path(@item)

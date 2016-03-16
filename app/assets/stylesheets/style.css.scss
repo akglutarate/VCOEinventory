@@ -113,6 +113,19 @@ hr {
 	text-decoration: none;
 }
 
+.not_logged_in,
+.not_logged_in:focus {
+	color: #fff;
+	text-decoration: none;
+	margin-left: 15px;
+}
+
+.not_logged_in:hover,
+.not_logged_in:active {
+	color: #59cf19;
+	text-decoration: none;
+}
+
 .navbar {
 	border-radius: 0;
 	margin:  0;
@@ -197,6 +210,10 @@ form {
 		width: 250px;
 		bottom: 15px;
 		right: 20px;
+	}
+	
+	.not_logged_in {
+		margin-top: 30px;
 	}
 }
 
