@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'pages#index'
+  root 'sessions#new'
 
   resources :items
   

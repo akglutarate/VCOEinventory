@@ -15,7 +15,10 @@
           </li>
         </ul>
         <div class="hello right">
-          <span class="salud right"> Hello, <%= current_user.username %>!</span>
+          <span class="salud right">
+            Hello, <%= current_user.username %>!
+            <% if current_user.admin? %> - Admin<% end %>
+          </span>
           <span class="glyphicon glyphicon-user right greeting"></span>
         </div>
       <% else %>
@@ -42,7 +45,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'View All Items', items_path %></li>
-        <li><%= link_to 'View All Users', users_path %></li>
+        <li><%= link_to 'View All Users', users_path if logged_in? %></li>
         <li><%= link_to 'Create New Item', new_item_path if logged_in? %></li>
       </ul>
       

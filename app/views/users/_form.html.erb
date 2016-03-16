@@ -3,10 +3,10 @@
     
     
     <div class="form-group">
-      <div class="control-label col-sm-3">
+      <div class="control-label col-sm-4">
         <%= f.label :username %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <% if @user.errors[:username].any? %>
           <ul class="error">
             <% @user.errors[:username].each do |error| %>
@@ -20,10 +20,10 @@
       
       
     <div class="form-group">
-      <div class="control-label col-sm-3">
+      <div class="control-label col-sm-4">
         <%= f.label :email %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <% if @user.errors[:email].any? %>
           <ul class="error">
             <% @user.errors[:email].each do |error| %>
@@ -37,10 +37,10 @@
       
 
     <div class="form-group">
-      <div class="control-label col-sm-3">
+      <div class="control-label col-sm-4">
         <%= f.label :password %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <% if @user.errors[:password].any? %>
           <ul class="error">
             <% @user.errors[:password].each do |error| %>
@@ -54,7 +54,7 @@
       
       
     <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-6">
+      <div class="col-sm-offset-4 col-sm-4">
         <%= f.submit(f.object.new_record? ? 'Register' : 'Update Profile', class: 'btn btn-success btn-lg item_submit') %>
       </div>
     </div>  

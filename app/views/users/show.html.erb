@@ -4,11 +4,25 @@
       <div class="panel-body">
         <h1><%= @user.username %></h1>
         <p><%= @user.email %></p>
-        <hr />
+        
+        <% if logged_in? && current_user.admin? %>
+          <div class="dropdown edit_user_dropdown pull-right">
+            <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
+              Edit Profile <span class="glyphicon glyphicon-cog"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit Profile", edit_user_path(@user) %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Delete #{@user.username}", user_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete #{@user.username}?" } %></li>
+            </ul>
+          </div>
+        <% end %>
+        
+        <hr class="clear"/>
         <ul class="user_items">
           <% @user.items.each do |item| %>
             <li>
-              <% if logged_in? && item.user == current_user %>
+              <% if logged_in? && (item.user == current_user || current_user.admin?) %>
                 <div class="dropdown pull-right">
                   <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
                     Edit <span class="glyphicon glyphicon-cog"></span>

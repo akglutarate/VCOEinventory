@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
     
   before_action :set_item, only: [:edit, :update, :show, :destroy]
-
+  before_action :require_user, except: [:index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -51,5 +52,12 @@ class ItemsController < ApplicationController
   
     def item_params
       params.require(:item).permit(:title, :owner_location)
+    end
+    
+    def require_same_user
+      if current_user != @item.user && !current_user.admin?
+        flash[:danger] = 'You can only edit your own account.'
+        redirect_to root_path
+      end
     end
 end

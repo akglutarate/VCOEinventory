@@ -20,6 +20,11 @@ h1 {
 	font-weight: bold;
 }
 
+h1.home {
+	font-size: 42px;
+	margin: 10px 0;
+}
+
 h2 {
 	font-size: 24px;
 	margin: 0 0 5px;
@@ -27,6 +32,18 @@ h2 {
 
 h2 > a:hover,
 h2 > a:focus {
+	text-decoration: none;
+}
+
+h3 {
+	font-size: 22px;
+	margin: 40px 0 30px;
+}
+
+a,
+a:hover,
+a:active,
+a:focus {
 	text-decoration: none;
 }
 
@@ -53,7 +70,7 @@ hr {
 
 .btn-success {
 	font-size: 14px;
-	background-color: #59cf19;
+	background-color: #62ce27;
 	border-color: #59cf19;
 }
 
@@ -65,6 +82,9 @@ hr {
 .btn-warning {
 	border-color: #f0ad4e;
 }
+
+
+/* navigation */
 
 .top {
 	padding: 0;
@@ -116,14 +136,12 @@ hr {
 .not_logged_in,
 .not_logged_in:focus {
 	color: #fff;
-	text-decoration: none;
 	margin-left: 15px;
 }
 
 .not_logged_in:hover,
 .not_logged_in:active {
 	color: #59cf19;
-	text-decoration: none;
 }
 
 .navbar {
@@ -138,6 +156,8 @@ hr {
 	color: #bbb;
 }
 
+
+/* forms */
 
 form {
 	margin-top: 20px;
@@ -164,6 +184,9 @@ form {
 	font-weight: bold;
 }
 
+
+/* item/user show pages */
+
 .edit_item_dropdown {
 	background: transparent;
 	border: none;
@@ -172,6 +195,12 @@ form {
 .edit_item_dropdown:hover,
 .edit_item_dropdown:active {
 	color: #43b803;
+}
+
+.edit_user_dropdown {
+	position: absolute;
+	top: 20px;
+	right: 30px;
 }
 
 .side {
@@ -192,6 +221,8 @@ form {
 	padding: 0;
 	list-style: none;
 }
+
+
 
 
 
