@@ -43,6 +43,17 @@ class ItemsController < ApplicationController
     flash[:success] = "#{@item.title} has been deleted."
     redirect_to items_path
   end
+  
+  def borrow
+    @exchange = Exchange.new(exchange_params)
+    @exchange.borrower = current_user
+    @exchange.item_id = Item.find(params[:id])
+    if @exchange.save
+      flash[:success] = 'You are now borrowing the item.'
+    else
+      render 'show'
+    end
+  end
 
 
   private
@@ -52,6 +63,10 @@ class ItemsController < ApplicationController
   
     def item_params
       params.require(:item).permit(:title, :owner_location)
+    end
+    
+    def exchange_params
+      params.require(:exchange).permit(:borrower, :item_id)
     end
     
     def require_same_user
