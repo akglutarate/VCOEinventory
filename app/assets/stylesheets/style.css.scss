@@ -205,8 +205,8 @@ form {
 
 .side {
 	margin-left: 20px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .side form {
@@ -234,6 +234,26 @@ form {
 .currently_borrowing {
 	padding: 0;
 	list-style: none;
+}
+
+#exchange_history {
+	display: none;
+	padding: 10px 0 0 13px;
+}
+
+#exchange_history li {
+	margin-bottom: 8px;
+	font-size: 12px;
+}
+
+#exchange_history hr {
+	margin-top: 3px;
+}
+
+.view_history {
+	display: inline-block;
+	margin-top: 3px;
+	margin-bottom: 5px;
 }
 
 

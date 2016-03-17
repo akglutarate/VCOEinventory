@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @exchanges = Exchange.where(user_id: @user, active: true)
   end
   
   def destroy

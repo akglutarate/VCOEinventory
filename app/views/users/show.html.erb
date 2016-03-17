@@ -47,18 +47,22 @@
     
     <div class="panel panel-default col-sm-3 side">
       <div class="panel-body">        
-          <% if @user.items.any? %>
+          <% if @exchanges.any? %>
             <% if @user == current_user %>
               <p>You are currently borrowing: </p>
             <% else %>
               <p><%= @user.username %> is currently borrowing:</p>  
             <% end %>
+            
             <ul class="currently_borrowing">
-              <li><%= link_to @user.items.first.title, item_path(@user.items.first) %></li>
+              <% @exchanges.each do |exchange| %>
+                <li><%= link_to exchange.item.title, item_path(exchange.item)  %></li>
+              <% end %>
             </ul>
+            
           <% else %>
             <% if @user == current_user %>
-              <p>You are not currently borrowing anything: </p>
+              <p>You are not currently borrowing anything.</p>
             <% else %>
               <p><%= @user.username %> is not currently borrowing anything.</p>  
             <% end %>

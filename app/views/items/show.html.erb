@@ -19,7 +19,19 @@
         <br class="clear" />
         <br />
         <p>Home Location: <%= @item.owner_location %></p>
-        <p>Belongs to: <%= link_to @item.user.username, user_path(@item.user) %></p>
+        <a href="" class="view_history">View History</a>
+        <ul id="exchange_history">
+          <hr />
+          <% @exchanges.each do |exchange| %>
+            <li>
+              Borrowed by <%= exchange.user.username %> on <%= exchange.borrowed_time %> <br />
+              <% if exchange.active == false %>
+                Returned <%= exchange.return_time %>.
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        
       </div>
     </div>
     
@@ -27,8 +39,8 @@
       <div class="panel-body">
         
         <%= button_to "Borrow", item_borrow_path(@item.id), class: 'btn btn-success borrow' if !@item.exchanges.any? || !@item.exchanges.last.active? %>
-        <% if @item.exchanges.last.user == current_user %>
-          <%= button_to "Return", item_return_path(@item.id), class: 'btn btn-warning borrow' if @item.exchanges.any? && @item.exchanges.last.active? %>
+        <% if @item.exchanges.any? && @item.exchanges.last.user == current_user %>
+          <%= button_to "Return", item_return_path(@item.id), class: 'btn btn-warning borrow' if @item.exchanges.last.active? %>
         <% else %>
           <%= button_to "Return", item_return_path(@item.id), class: 'btn btn-warning borrow', :disabled => true if @item.exchanges.any? && @item.exchanges.last.active? %>
         <% end %>
@@ -41,4 +53,23 @@
     </div>
     
   </div>
+  
 </div>
+
+
+<script>
+  jQuery(function($) {
+    $('.view_history').click(function() {
+      $('#exchange_history').slideToggle(100);
+      $(this).toggleClass('open');
+      
+      if ( $(this).is('.open') ) {
+        $(this).html('Hide History');
+      } else {
+        $(this).html('Show History');
+      }
+      
+      return false;
+    });
+  })(jQuery);
+</script>

@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
   
   def show
     @user = User.all
+    @exchanges = Exchange.where(item_id: @item)
   end
 
   def destroy
@@ -53,6 +54,7 @@ class ItemsController < ApplicationController
     @exchange.lender = @item.user.id
     @exchange.item_id = @item.id
     @exchange.active = true
+    @exchange.borrowed_time = Time.now.strftime("%B %e, %Y at %I:%M %p")
     if @exchange.save
       flash[:success] = "You are now borrowing #{@item.title}."
       redirect_to item_path(@item)
@@ -65,6 +67,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:item_id])
     @exchange = @item.exchanges.last
     @exchange.active = false
+    @exchange.return_time = Time.now.strftime("%B %e, %Y at %I:%M %p")
     if @exchange.save
       flash[:success] = "You have returned #{@item.title}."
       redirect_to item_path(@item)
