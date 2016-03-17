@@ -1,4 +1,4 @@
-
+/*
 jQuery(function($) {
   $('.view_history').click(function() {
     $('#exchange_history').slideToggle(100);
@@ -13,4 +13,5 @@ jQuery(function($) {
     return false;
   });
 })(jQuery);
+*/
 
