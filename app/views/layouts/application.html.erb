@@ -22,19 +22,20 @@
 
 
 <script>
-  //$('.view_history').click(function() {
-  function showHistory() {
-    $('#exchange_history').slideToggle(100);
-    $('.view_history').toggleClass('open');
-    
-    if ( $('.view_history').is('.open') ) {
-      $('.view_history').html('Hide History');
-    } else {
-      $('.view_history').html('Show History');
-    }
-    
-    return false;
-  }
+  jQuery(function($) {
+    $('.view_history').click(function() {
+      $('#exchange_history').slideToggle(100);
+      $(this).toggleClass('open');
+      
+      if ( $(this).is('.open') ) {
+        $(this).html('Hide History');
+      } else {
+        $(this).html('Show History');
+      }
+      
+      return false;
+    });
+  })(jQuery);
 </script>
 
 </body>
