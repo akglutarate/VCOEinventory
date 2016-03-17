@@ -205,6 +205,20 @@ form {
 
 .side {
 	margin-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.side form {
+	margin-top: 0;
+}
+
+.side p {
+	margin-bottom: 0;
+}
+
+.side hr {
+	margin-top: 20px;
 }
 
 .borrow {

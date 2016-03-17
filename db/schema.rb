@@ -11,22 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316233257) do
+ActiveRecord::Schema.define(version: 20160317015330) do
 
   create_table "exchanges", force: :cascade do |t|
-    t.integer  "borrower"
+    t.integer  "user_id"
     t.integer  "lender"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_id"
+    t.boolean  "active",     default: false
   end
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
-    t.string   "owner"
     t.string   "owner_location"
-    t.string   "borrower"
-    t.string   "borrower_location"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

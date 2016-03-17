@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @user = User.all
   end
 
   def destroy
@@ -43,17 +44,35 @@ class ItemsController < ApplicationController
     flash[:success] = "#{@item.title} has been deleted."
     redirect_to items_path
   end
+
   
   def borrow
-    @exchange = Exchange.new(exchange_params)
-    @exchange.borrower = current_user
-    @exchange.item_id = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
+    @exchange = Exchange.new
+    @exchange.user_id = current_user.id
+    @exchange.lender = @item.user.id
+    @exchange.item_id = @item.id
+    @exchange.active = true
     if @exchange.save
-      flash[:success] = 'You are now borrowing the item.'
+      flash[:success] = "You are now borrowing #{@item.title}."
+      redirect_to item_path(@item)
     else
       render 'show'
     end
   end
+
+  def return
+    @item = Item.find(params[:item_id])
+    @exchange = @item.exchanges.last
+    @exchange.active = false
+    if @exchange.save
+      flash[:success] = "You have returned #{@item.title}."
+      redirect_to item_path(@item)
+    else
+      render 'show'
+    end
+  end
+
 
 
   private
@@ -66,7 +85,7 @@ class ItemsController < ApplicationController
     end
     
     def exchange_params
-      params.require(:exchange).permit(:borrower, :item_id)
+      params.require(:exchange).permit(:item_id, :active)
     end
     
     def require_same_user

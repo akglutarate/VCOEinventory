@@ -25,11 +25,18 @@
     
     <div class="panel panel-default col-sm-3 side">
       <div class="panel-body">
-        <button type="button" class="btn btn-success borrow">Borrow <span class="glyphicon glyphicon-ok"></span></button>
-        <br /><br />
-        <button type="button" class="btn btn-warning borrow">Return <span class="glyphicon glyphicon-arrow-left"></span></button>
-        <hr />
-        <p>Lent to Jimmy 4 days ago.</p>
+        
+        <%= button_to "Borrow", item_borrow_path(@item.id), class: 'btn btn-success borrow' if !@item.exchanges.any? || !@item.exchanges.last.active? %>
+        <% if @item.exchanges.last.user == current_user %>
+          <%= button_to "Return", item_return_path(@item.id), class: 'btn btn-warning borrow' if @item.exchanges.any? && @item.exchanges.last.active? %>
+        <% else %>
+          <%= button_to "Return", item_return_path(@item.id), class: 'btn btn-warning borrow', :disabled => true if @item.exchanges.any? && @item.exchanges.last.active? %>
+        <% end %>
+
+        <% if @item.exchanges.any? && @item.exchanges.last.active? %>
+          <hr />
+          <p>Lent to <%= link_to @item.exchanges.last.user.username, user_path(@item.exchanges.last.user) %>.</p>
+        <% end %>
       </div>
     </div>
     
