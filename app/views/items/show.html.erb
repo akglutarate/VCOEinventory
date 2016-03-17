@@ -19,7 +19,7 @@
         <br class="clear" />
         <br />
         <p>Home Location: <%= @item.owner_location %></p>
-        <a href="" class="view_history">View History</a>
+        <a href="" class="view_history" onclick="showHistory()">View History</a>
         <ul id="exchange_history">
           <hr />
           <% @exchanges.each do |exchange| %>

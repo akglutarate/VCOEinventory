@@ -22,18 +22,19 @@
 
 
 <script>
-  $('.view_history').click(function() {
+  //$('.view_history').click(function() {
+  function showHistory() {
     $('#exchange_history').slideToggle(100);
-    $(this).toggleClass('open');
+    $('.view_history').toggleClass('open');
     
-    if ( $(this).is('.open') ) {
-      $(this).html('Hide History');
+    if ( $('.view_history').is('.open') ) {
+      $('.view_history').html('Hide History');
     } else {
-      $(this).html('Show History');
+      $('.view_history').html('Show History');
     }
     
     return false;
-  });
+  }
 </script>
 
 </body>
