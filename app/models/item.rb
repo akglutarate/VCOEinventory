@@ -7,4 +7,14 @@ class Item < ActiveRecord::Base
   validates :owner_location, presence: true, length: { minimum: 3, maximum: 50 }
   validates :user_id, presence: true
   
+  
+  def self.search(search)
+    if search
+      self.where('title LIKE ?', "%#{search}%")
+      #self.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      self.all
+    end
+  end
+  
 end

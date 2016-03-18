@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    @items = Item.search(params[:search])
   end
 
   def new
@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
   
   def borrow
     @item = Item.find(params[:item_id])
-    @exchange = Exchange.new
+    @exchange = Exchange.new(params[exchange_params])
     @exchange.user_id = current_user.id
     @exchange.lender = @item.user.id
     @exchange.item_id = @item.id
@@ -88,7 +88,7 @@ class ItemsController < ApplicationController
     end
     
     def exchange_params
-      params.require(:exchange).permit(:item_id, :active)
+      params.require(:exchange).permit(:user_id, :lender, :item_id, :active, :borrowed_time)
     end
     
     def require_same_user

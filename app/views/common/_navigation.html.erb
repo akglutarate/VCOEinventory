@@ -17,7 +17,8 @@
         <div class="hello right">
           <span class="salud right">
             Hello, <%= current_user.username %>!
-            <% if current_user.admin? %> - Admin<% end %>
+            <% if current_user.admin? %> - Admin
+            <% end %>
           </span>
           <span class="glyphicon glyphicon-user right greeting"></span>
         </div>
@@ -49,14 +50,16 @@
         <li><%= link_to 'Create New Item', new_item_path if logged_in? %></li>
       </ul>
       
-      <form class="navbar-form navbar-right" role="search">
+      <%= form_tag items_path, :method => 'get', :enforce_utf8 => false, class: 'navbar-form navbar-right'  do %>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search items...">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
+        <%= text_field_tag :search, params[:search], :placeholder => 'Search for items...' , class: 'form-control' %>
+        <span class="input-group-btn">
+          <%= button_tag(type: 'submit', :name => nil, class: "btn btn-default") do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+        </span>
         </div>
-      </form>
+      <% end %>
       
     </div>
   </div>
