@@ -241,7 +241,8 @@ form {
 	padding: 10px 0 0 13px;
 }
 
-#exchange_history li {
+#exchange_history li,
+#exchange_history p {
 	margin-bottom: 8px;
 	font-size: 12px;
 }
@@ -254,6 +255,29 @@ form {
 	display: inline-block;
 	margin-top: 3px;
 	margin-bottom: 5px;
+}
+
+
+/* pagination */
+
+.pagination {
+	margin: 20px auto;
+}
+.pagination a {
+	margin: 0 10px;
+}
+
+.pagination em {
+	margin: 0 5px;
+	font-style: normal;
+	/*border: 1px solid #777;*/
+	background-color: #fff;
+	padding: 5px;
+}
+
+.pagination .disabled {
+	visibility: hidden;
+	padding: 10px;
 }
 
 

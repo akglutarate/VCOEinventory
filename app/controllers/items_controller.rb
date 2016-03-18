@@ -50,10 +50,8 @@ class ItemsController < ApplicationController
   def borrow
     @item = Item.find(params[:item_id])
     @exchange = Exchange.new
-    @exchange.user_id = current_user.id
-    @exchange.item_id = @item.id
-    @exchange.active = true
-    @exchange.borrowed_time = Time.now.strftime("%B %e, %Y at %I:%M %p")
+    @exchange.borrow(current_user.id, @item.id)
+    
     if @exchange.save
       flash[:success] = "You are now borrowing #{@item.title}."
       redirect_to item_path(@item)
@@ -62,14 +60,15 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def return
     @item = Item.find(params[:item_id])
     @exchange = @item.exchanges.last
-    @exchange.active = false
-    @exchange.return_time = Time.now.strftime("%B %e, %Y at %I:%M %p")
+    @exchange.return
+
     if @exchange.save
       flash[:success] = "You have returned #{@item.title}."
-      redirect_to item_path(@item)
+    redirect_to item_path(@item)
     else
       render 'show'
     end

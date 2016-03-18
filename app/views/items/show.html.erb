@@ -22,13 +22,17 @@
         <a href="" class="view_history" onclick="showHistory()">View History</a>
         <ul id="exchange_history">
           <hr />
-          <% @exchanges.each do |exchange| %>
-            <li>
-              Borrowed by <%= exchange.user.username %> on <%= exchange.borrowed_time %> <br />
-              <% if exchange.active == false %>
-                Returned <%= exchange.return_time %>.
-              <% end %>
-            </li>
+          <% if @exchanges.any? %>
+            <% @exchanges.each do |exchange| %>
+              <li>
+                Borrowed by <%= exchange.user.username %> on <%= exchange.borrowed_time %> <br />
+                <% if exchange.active == false %>
+                  Returned <%= exchange.return_time %>.
+                <% end %>
+              </li>
+            <% end %>
+          <% else %>
+            <p>No history to show..</p>
           <% end %>
         </ul>
         
