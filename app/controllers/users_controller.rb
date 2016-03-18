@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   
   
   def index
-    @users = User.paginate(page: params[:page], per_page: 5)
+    @users = User.paginate(page: params[:page], per_page: 5).order('username ASC')
   end
   
   
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   
   
   def show
-    @items = @user.items.paginate(page: params[:page], per_page: 10).order('title ASC')
+    @items = @user.items.paginate(page: params[:page], per_page: 5).order('title ASC')
     @exchanges = Exchange.where(user_id: @user, active: true)
   end
   
