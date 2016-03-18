@@ -28,7 +28,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+
 gem 'will_paginate', '~> 3.0.6'
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

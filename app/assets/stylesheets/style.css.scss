@@ -9,6 +9,10 @@ body {
 	font-weight: 300;
 }
 
+.row {
+	margin: 0;
+}
+
 #main_content {
 	background-color: #f4f3ee;
 	padding: 40px 0 80px;
@@ -27,7 +31,7 @@ h1.home {
 
 h2 {
 	font-size: 24px;
-	margin: 0 0 5px;
+	margin: 5px 0 10px;
 }
 
 h2 > a:hover,
@@ -233,6 +237,7 @@ form {
 
 .currently_borrowing {
 	padding: 0;
+	margin-top: 5px;
 	list-style: none;
 }
 
@@ -257,6 +262,10 @@ form {
 	margin-bottom: 5px;
 }
 
+.user_email {
+	color: #000;
+}
+
 
 /* pagination */
 
@@ -270,7 +279,6 @@ form {
 .pagination em {
 	margin: 0 5px;
 	font-style: normal;
-	/*border: 1px solid #777;*/
 	background-color: #fff;
 	padding: 5px;
 }
@@ -280,7 +288,31 @@ form {
 	padding: 10px;
 }
 
+.user_items_paginate .pagination {
+	margin: 5px auto;
+}
 
+
+/* delete confirmation */
+
+.modal-dialog {
+	width: 300px;
+}
+
+.modal-header {
+	display: none;
+}
+
+.modal-body p {
+	font-size: 16px;
+	padding: 5px;
+}
+
+.modal-footer {
+	padding-top: 0;
+	border: none;
+	text-align: center;
+}
 
 
 

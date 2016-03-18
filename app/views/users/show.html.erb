@@ -3,7 +3,7 @@
     <div class="panel panel-default col-sm-7 col-sm-offset-1">
       <div class="panel-body">
         <h1><%= @user.username %></h1>
-        <p><%= @user.email %></p>
+        <%= link_to @user.email, "mailto:#{@user.email}" %>
         
         <% if logged_in? && current_user.admin? %>
           <div class="dropdown edit_user_dropdown pull-right">
@@ -20,7 +20,7 @@
         
         <hr class="clear"/>
         <ul class="user_items">
-          <% @user.items.each do |item| %>
+          <% @items.each do |item| %>
             <li>
               <% if logged_in? && (item.user == current_user || current_user.admin?) %>
                 <div class="dropdown pull-right">
@@ -42,6 +42,9 @@
             </li>
           <% end %>  
         </ul>
+        <div align="center" class="user_items_paginate">
+          <%= will_paginate @items %>
+        </div>
       </div>
     </div>
     

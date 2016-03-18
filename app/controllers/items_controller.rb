@@ -4,13 +4,16 @@ class ItemsController < ApplicationController
   before_action :require_user, except: [:index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
+
   def index
     @items = Item.search(params[:search]).paginate(page: params[:page], per_page: 5).order('title ASC')
   end
 
+
   def new
     @item = Item.new
   end
+
 
   def create
     @item = Item.new(item_params)
@@ -23,8 +26,10 @@ class ItemsController < ApplicationController
     end
   end
   
+  
   def edit
   end
+
 
   def update
     if @item.update(item_params)
@@ -35,10 +40,12 @@ class ItemsController < ApplicationController
     end
   end
   
+  
   def show
     @user = User.all
     @exchanges = Exchange.where(item_id: @item)
   end
+
 
   def destroy
     @item.destroy
@@ -55,8 +62,6 @@ class ItemsController < ApplicationController
     if @exchange.save
       flash[:success] = "You are now borrowing #{@item.title}."
       redirect_to item_path(@item)
-    else
-      render 'show'
     end
   end
 
@@ -68,9 +73,7 @@ class ItemsController < ApplicationController
 
     if @exchange.save
       flash[:success] = "You have returned #{@item.title}."
-    redirect_to item_path(@item)
-    else
-      render 'show'
+      redirect_to item_path(@item)
     end
   end
 
@@ -81,13 +84,16 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
   
+  
     def item_params
       params.require(:item).permit(:title, :owner_location)
     end
     
+    
     def exchange_params
       params.require(:exchange).permit(:user_id, :lender, :item_id, :active, :borrowed_time)
     end
+    
     
     def require_same_user
       if current_user != @item.user && !current_user.admin?

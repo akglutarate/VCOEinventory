@@ -10,9 +10,11 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page], per_page: 5)
   end
   
+  
   def new
     @user = User.new
   end
+  
   
   def create
     @user = User.new(user_params)
@@ -23,11 +25,12 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-    
   end
+  
   
   def edit
   end
+  
   
   def update
     if @user.update(user_params)
@@ -38,9 +41,12 @@ class UsersController < ApplicationController
     end
   end
   
+  
   def show
+    @items = @user.items.paginate(page: params[:page], per_page: 4)
     @exchanges = Exchange.where(user_id: @user, active: true)
   end
+  
   
   def destroy
     deleted_user = @user.username
@@ -50,14 +56,17 @@ class UsersController < ApplicationController
   end
   
   
+  
   private
     def set_user
       @user = User.find(params[:id])
     end
     
+    
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end
+    
     
     def require_same_user
       if current_user != @user && !current_user.admin?
@@ -65,6 +74,7 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     end
+    
     
     def require_admin
       if logged_in? && !current_user.admin? 

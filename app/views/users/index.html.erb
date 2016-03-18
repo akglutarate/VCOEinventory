@@ -6,9 +6,8 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <h2><%= link_to user.username, user_path(user) %></h2>
-            <hr class="clear" />
-            <p><%= user.email %></p>
-            <p class="meta"><%= user.items.count %> items</p>
+            <div class="clear"></div>
+            <%= link_to user.email, "mailto:#{user.email}", class: 'user_email' %>
           </div>
         </div>
       <% end %>
