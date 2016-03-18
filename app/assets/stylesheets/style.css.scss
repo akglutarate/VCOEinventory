@@ -22,9 +22,11 @@ h1 {
 	margin: 0 0 15px;
 	font-size: 28px;
 	font-weight: bold;
+	width: 85%;
 }
 
 h1.home {
+	width: 100%;
 	font-size: 42px;
 	margin: 10px 0;
 }
@@ -371,6 +373,14 @@ form {
 	.clearer {
 		clear: both;
 	}
+	
+	h1 {
+		width: 75%;
+	}
+	
+	h1.home {
+		width: 100%;
+	}
 }
 
 @media (max-width: 400px) {
@@ -384,5 +394,13 @@ form {
 	
 	.hello {
 		right: 0;
+	}
+	
+	h1 {
+		width: 60%;
+	}
+	
+	h1.home {
+		width: 100%;
 	}
 }
