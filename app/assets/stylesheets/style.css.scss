@@ -199,9 +199,24 @@ form {
 
 /* item/user show pages */
 
+.show_all {
+	margin-bottom: 10px;
+}
+
+.show_all .panel-body,
+.show_all.well {
+	padding: 8px 10px;
+}
+
+.show_all_title {
+	width: 40%;
+	font-size: 16px;
+}
+
 .edit_item_dropdown {
 	background: transparent;
 	border: none;
+	margin-top: 2px;
 }
 
 .edit_item_dropdown:hover,
@@ -213,6 +228,10 @@ form {
 	position: absolute;
 	top: 20px;
 	right: 30px;
+}
+
+.show_all_users .panel-body {
+	padding: 15px 20px;
 }
 
 .side {
@@ -343,6 +362,14 @@ form {
 	
 	.not_logged_in {
 		margin-top: 30px;
+	}
+	
+	.show_all_title {
+		width: auto;
+	}
+	
+	.clearer {
+		clear: both;
 	}
 }
 

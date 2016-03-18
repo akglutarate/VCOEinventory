@@ -22,7 +22,8 @@
         <ul class="user_items">
           <% @items.each do |item| %>
             <li>
-              <% if logged_in? && (item.user == current_user || current_user.admin?) %>
+            <% if logged_in? && (item.user == current_user || current_user.admin?) %>
+              <li>  
                 <div class="dropdown pull-right">
                   <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
                     Edit <span class="glyphicon glyphicon-cog"></span>
@@ -33,12 +34,13 @@
                     <li><%= link_to "Delete #{item.title}", item_path(item), method: :delete, data: { confirm: "Are you sure you want to delete #{item.title}?" } %></li>
                   </ul>
                 </div>
-              <% end %>
-              <br class="clear" />
-            </li>
-            <li class="well">
-              <div class="left"><%= link_to item.title, item_path(item) %> - <%= item.owner_location %></div>
-              <br class="clear" />
+                <div class="clear"></div>
+              </li>
+            <% end %>
+            <li class="well show_all">
+              <div class="left show_all_title"><%= link_to item.title, item_path(item) %></div>
+              <div class="clearer"></div>
+              <p><%= item.owner_location %></p>
             </li>
           <% end %>  
         </ul>

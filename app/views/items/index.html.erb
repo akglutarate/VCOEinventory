@@ -1,14 +1,18 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-8 col-sm-offset-2">
       <% if !@items.any? %>
         <p>Your search did not return any results. Please try again, or <%= link_to 'view all items', items_path %>.</p>
       <% end %>
+      
+      <!--<%= collection_select(:item, :index, Item.all, :id, :owner_location) %>-->
+      
       <% @items.each do |item| %>
-        <div class="panel panel-default">
+        <div class="panel panel-default show_all">
           <div class="panel-body">
-            <h2 class="left"><%= link_to item.title, item_path(item) if logged_in? %><%= item.title if !logged_in? %></h2>
+            <div class="left show_all_title"><%= link_to item.title, item_path(item) if logged_in? %><%= item.title if !logged_in? %></div>
+            
             <% if logged_in? && (item.user == current_user || current_user.admin?) %>
               <div class="dropdown pull-right">
                 <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
@@ -21,7 +25,7 @@
                 </ul>
               </div>
             <% end %>
-            <div class="clear"></div>
+            <div class="clearer"></div>
             <p><!--<%= item.title %> belongs to --><%= item.owner_location %>.</p>
           </div>
         </div>

@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <% @users.each do |user| %>
-        <div class="panel panel-default">
+        <div class="panel panel-default show_all_users">
           <div class="panel-body">
             <h2><%= link_to user.username, user_path(user) %></h2>
             <div class="clear"></div>
