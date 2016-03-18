@@ -1,5 +1,2 @@
 == README
-
-
-* ...
-<tt>rake doc:app</tt>.
+<tt>vcoe inventory control</tt>.

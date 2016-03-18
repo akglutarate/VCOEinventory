@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   
   def show
     @user = User.all
-    @exchanges = Exchange.where(item_id: @item)
+    @exchanges = Exchange.where(item_id: @item).order('id DESC')
   end
 
 

@@ -19,7 +19,7 @@ body {
 }
 
 h1 {
-	margin: 0 0 5px;
+	margin: 0 0 15px;
 	font-size: 28px;
 	font-weight: bold;
 }
@@ -30,8 +30,8 @@ h1.home {
 }
 
 h2 {
-	font-size: 24px;
-	margin: 5px 0 10px;
+	font-size: 22px;
+	margin: 0 0 10px;
 }
 
 h2 > a:hover,
@@ -41,7 +41,11 @@ h2 > a:focus {
 
 h3 {
 	font-size: 22px;
-	margin: 40px 0 30px;
+	margin: 30px 0 25px;
+}
+
+p {
+	margin-bottom: 0;
 }
 
 a,
@@ -85,6 +89,10 @@ hr {
 
 .btn-warning {
 	border-color: #f0ad4e;
+}
+
+.panel-body {
+	padding: 20px 15px;
 }
 
 
@@ -258,8 +266,8 @@ form {
 
 .view_history {
 	display: inline-block;
-	margin-top: 3px;
-	margin-bottom: 5px;
+	margin-top: 28px;
+	margin-bottom: 0;
 }
 
 .user_email {
