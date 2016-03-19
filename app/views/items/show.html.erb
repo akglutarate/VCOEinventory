@@ -18,6 +18,7 @@
         <% end %>
         <div class="clear"></div>
         <p>Home Location: <%= @item.owner_location %></p>
+        <p class="meta">Created by: <%= link_to @item.user.username, user_path(@item.user) %></p>
         <a href="" class="view_history" onclick="showHistory()">View History</a>
         <ul id="exchange_history">
           <hr />

@@ -202,7 +202,7 @@ form {
 /* item/user show pages */
 
 .show_all {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 
 .show_all .panel-body,
@@ -210,10 +210,21 @@ form {
 	padding: 8px 10px;
 }
 
+/*.show_all:hover {
+	background-color: #fcfcf9;
+}*/
+
+/*.show_all.well:hover {
+	background-color: #f7f7f7;
+}*/
+
+
 .show_all_title {
-	width: 50%;
+	width: 55%;
 	font-size: 16px;
+	float: left;
 }
+
 
 .edit_item_dropdown {
 	background: transparent;
@@ -287,7 +298,7 @@ form {
 
 .view_history {
 	display: inline-block;
-	margin-top: 28px;
+	margin-top: 16px;
 	margin-bottom: 0;
 }
 
@@ -299,8 +310,9 @@ form {
 /* pagination */
 
 .pagination {
-	margin: 20px auto;
+	margin: 10px auto 5px;
 }
+
 .pagination a {
 	margin: 0 10px;
 }
@@ -315,10 +327,6 @@ form {
 .pagination .disabled {
 	visibility: hidden;
 	padding: 10px;
-}
-
-.user_items_paginate .pagination {
-	margin: 5px auto;
 }
 
 
@@ -368,6 +376,10 @@ form {
 	
 	.show_all_title {
 		width: 75%;
+	}
+	
+	.table_row p {
+		display: block;	
 	}
 	
 	.clearer {
