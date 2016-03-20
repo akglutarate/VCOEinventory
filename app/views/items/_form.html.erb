@@ -17,17 +17,17 @@
     </div>
     <div class="form-group">
       <div class="control-label col-sm-3">
-        <%= f.label :owner_location %>
+        <%= f.label :owner_location, 'Home Location' %>
       </div>
       <div class="col-sm-6">
         <% if @item.errors[:owner_location].any? %>
           <ul class="error">
             <% @item.errors[:owner_location].each do |error| %>
-              <li>*Location <%= error %></li>
+              <li>*<%= error %></li>
             <% end %>
           </ul>
         <% end %>
-        <%= f.text_field :owner_location, class: "form-control", placeholder: "Enter a home location" %>
+        <%= f.collection_select :owner_location, School.all, :name, :name, { include_blank: 'Select a school' }, { class: 'form-control' } %>
       </div>
     </div>
     <div class="form-group">

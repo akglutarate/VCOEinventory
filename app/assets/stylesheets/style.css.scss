@@ -193,6 +193,10 @@ form {
   font-size: 11px;
 }
 
+.field_with_errors input {
+	border-color: #c51515;
+}
+
 .item_submit {
 	width: 100%;
 	font-weight: bold;
