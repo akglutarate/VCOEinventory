@@ -33,7 +33,7 @@
               </div>
             <% end %>
             <div class="clearer"></div>
-            <p class="left"><!--<%= item.title %> belongs to --><%= item.owner_location %>.</p>
+          <p class="left"><%= item.owner_location %><% if item.exchanges.any? && item.exchanges.last.active? %> (Lent out) <% end %></p>
           </div>
         </div>
       <% end %>

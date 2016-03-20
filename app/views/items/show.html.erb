@@ -19,7 +19,7 @@
         <div class="clear"></div>
         <p>Home Location: <%= @item.owner_location %></p>
         <p class="meta">Created by: <%= link_to @item.user.username, user_path(@item.user) %></p>
-        <a href="" class="view_history" onclick="function()">View History</a>
+        <a href="" class="view_history">View History</a>
         <ul id="exchange_history">
           <hr />
           <% if @exchanges.any? %>
@@ -51,7 +51,8 @@
 
         <% if @item.exchanges.any? && @item.exchanges.last.active? %>
           <hr />
-          <p>Lent to <%= link_to @item.exchanges.last.user.username, user_path(@item.exchanges.last.user) %>.</p>
+          <p>Lent to <%= link_to @item.exchanges.last.user.username, user_path(@item.exchanges.last.user) %><br />
+          on <%= @item.exchanges.last.borrowed_time %>.</p>
         <% end %>
       </div>
     </div>

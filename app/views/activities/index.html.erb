@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div align="center">
+        <h1>Activity</h1>
+      </div>
+      
+      <%= form_tag activity_path, :method => 'get',:enforce_utf8 => false, class: 'form-inline activity'  do %>
+        <div class="form-group">            
+          <button type="submit" value="" class="btn btn-default form-control input-sm">All</button>
+          <button type="submit" value="pending_return" class="btn btn-default form-control input-sm" name="view_by">Pending Return</button>
+        </div>
+      <% end %>
+      
+      <% @exchanges.each do |exchange| %>
+        * <strong><%= exchange.item_title %></strong><br />
+        Borrowed: <%= exchange.borrowed_time %>, <%= exchange.user.username %><br />
+        Returned: <%= exchange.return_time %><br />
+        =========================<br />
+      <% end %>
+    </div>
+  </div>
+</div>

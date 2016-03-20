@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320014037) do
+ActiveRecord::Schema.define(version: 20160320192723) do
 
   create_table "exchanges", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160320014037) do
     t.boolean  "active",        default: false
     t.string   "return_time"
     t.string   "borrowed_time"
+    t.string   "item_title"
   end
 
   create_table "items", force: :cascade do |t|

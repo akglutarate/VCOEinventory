@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   def borrow
     @item = Item.find(params[:item_id])
     @exchange = Exchange.new
-    @exchange.borrow(current_user.id, @item.id)
+    @exchange.borrow(current_user.id, @item)
     
     if @exchange.save
       flash[:success] = "You are now borrowing #{@item.title}."

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   resources :schools, except: [:show]
   
+  get 'activity', to: 'activities#index'
+  
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'

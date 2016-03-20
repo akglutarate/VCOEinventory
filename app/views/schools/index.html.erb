@@ -1,6 +1,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
+      <div align="center">
+        <h1>Schools</h1>
+      </div>
+      <%= link_to 'Add a School', new_school_path %><br /><br />
       
       <% @schools.each do |school| %>
         <div class="panel panel-default show_all">
@@ -19,9 +23,6 @@
           </div>
         </div>
       <% end %>
-      <div align="center">
-        <!-- pagination -->
-      </div>
     </div>
   </div>
 </div>

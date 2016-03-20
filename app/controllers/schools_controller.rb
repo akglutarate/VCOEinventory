@@ -4,7 +4,7 @@ class SchoolsController < ApplicationController
    before_action :require_admin
    
    def index
-     @schools = School.all
+     @schools = School.all.order('name ASC')
    end
     
   def new
