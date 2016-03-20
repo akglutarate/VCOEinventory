@@ -1,6 +1,21 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
+      <% if !@items.any? %>
+        <div align="center">
+          <p>Your search returned no results. Please try again, or <%= link_to 'view all items', items_path %>.</p>
+        </div>
+      <% else %>
+        
+        <%= form_tag items_path, :method => 'get',:enforce_utf8 => false, class: 'form-inline school_filter'  do %>
+          <div class="form-group">            
+            <%= select_tag(:filter, options_from_collection_for_select(@schools, "name", "name"), selected: params[:filter], :prompt => 'Filter by school', class: 'form-control input-sm') %>
+            <button type="submit" class="btn btn-default form-control input-sm">Filter</button>
+          </div>
+        <% end %>
+        
+      <% end %>
+      
       <% @items.each do |item| %>
         <div class="panel panel-default show_all">
           <div class="panel-body">

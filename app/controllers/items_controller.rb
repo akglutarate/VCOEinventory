@@ -6,7 +6,8 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.search(params[:search]).paginate(page: params[:page], per_page: 10).order('title ASC')
+    @items = Item.search(params[:search], params[:filter]).paginate(page: params[:page], per_page: 10).order('title ASC')
+    @schools = School.all
   end
 
 

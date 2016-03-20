@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
     
   belongs_to :user
+  belongs_to :school
   has_many :exchanges
   
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
@@ -8,9 +9,11 @@ class Item < ActiveRecord::Base
   validates :user_id, presence: true
   
   
-  def self.search(search)
+  def self.search(search, filter)
     if search
-      self.where('title ILIKE ?', "%#{search}%")
+      self.where('title ilike ?', "%#{search}%")
+    elsif filter
+      self.where('owner_location ilike ?', "%#{filter}%")
     else
       self.all
     end

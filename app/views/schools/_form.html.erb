@@ -1,0 +1,24 @@
+<div class='col-md-12'>
+  <%= form_for(@school, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <div class="form-group">
+      <div class="control-label col-sm-3">
+        <%= f.label :name, 'School Name' %>
+      </div>
+      <div class="col-sm-6">
+        <% if @school.errors[:name].any? %>
+          <ul class="error">
+            <% @school.errors[:name].each do |error| %>
+              <li>*School name <%= error %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter a school name", autofocus: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-6">
+        <%= f.submit(f.object.new_record? ? 'Add School' : 'Update School', class: 'btn btn-success btn-lg item_submit') %>
+      </div>
+    </div>  
+  <% end %>
+</div>

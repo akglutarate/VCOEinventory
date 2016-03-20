@@ -198,6 +198,11 @@ form {
 	font-weight: bold;
 }
 
+form.school_filter {
+	margin-top: 0;
+	margin-bottom: 12px;
+}
+
 
 /* item/user show pages */
 
@@ -217,7 +222,6 @@ form {
 /*.show_all.well:hover {
 	background-color: #f7f7f7;
 }*/
-
 
 .show_all_title {
 	width: 55%;
