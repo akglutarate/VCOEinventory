@@ -1,6 +1,7 @@
 class SchoolsController < ApplicationController
    
    before_action :set_school, only: [:edit, :update, :destroy]
+   before_action :require_admin
    
    def index
      @schools = School.all
@@ -49,6 +50,13 @@ class SchoolsController < ApplicationController
     
     def set_school
       @school = School.find(params[:id])
+    end
+    
+    def require_admin
+      if logged_in? && !current_user.admin? 
+        flash[:danger] = 'Only an admin can perform that action.'
+        redirect_to root_path
+      end
     end
 
 end

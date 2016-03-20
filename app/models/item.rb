@@ -11,9 +11,9 @@ class Item < ActiveRecord::Base
   
   def self.search(search, filter)
     if search
-      self.where('title ilike ?', "%#{search}%")
+      self.where('title ILIKE ?', "%#{search}%")
     elsif filter
-      self.where('owner_location ilike ?', "%#{filter}%")
+      self.where('owner_location ILIKE ?', "%#{filter}%")
     else
       self.all
     end
