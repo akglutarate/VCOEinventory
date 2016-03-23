@@ -6,10 +6,10 @@
           <p>Your search returned no results. Please try again, or <%= link_to 'view all items', items_path %>.</p>
         </div>
       <% else %>
-        
+    
         <%= form_tag items_path, :method => 'get',:enforce_utf8 => false, class: 'form-inline school_filter'  do %>
           <div class="form-group">            
-            <%= select_tag(:filter, options_from_collection_for_select(@schools, "name", "name"), selected: params[:filter], :prompt => 'Filter by school', class: 'form-control input-sm') %>
+            <%= select_tag(:filter, options_from_collection_for_select(@schools, "name", "name", params[:filter]), :prompt => 'Filter by school', class: 'form-control input-sm') %>
             <button type="submit" class="btn btn-default form-control input-sm">Filter</button>
           </div>
         <% end %>
@@ -33,7 +33,10 @@
               </div>
             <% end %>
             <div class="clearer"></div>
-          <p class="left"><%= item.owner_location %><% if item.exchanges.any? && item.exchanges.last.active? %> (Lent out) <% end %></p>
+          <p class="left">
+						<%= item.owner_location %>
+						<% if item.exchanges.any? && item.exchanges.last.active? %> <span class="badge">Lent out</span> <% end %>
+					</p>
           </div>
         </div>
       <% end %>

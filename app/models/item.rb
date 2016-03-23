@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
     if search
       self.where('title ilike ?', "%#{search}%")
     elsif filter
-      self.where('owner_location ilike ?', "%#{filter}%")
+      self.where('owner_location like ?', "%#{filter}%")
     else
       self.all
     end
