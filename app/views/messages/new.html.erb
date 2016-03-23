@@ -1,11 +1,11 @@
 <%= form_for @message, url: contact_path do |message| %>
 
 	<fieldset>
-		<div class="field">
-			<%= message.text_field :name, placeholder: 'Name' %>
+		<div class="hidden">
+			<%= message.text_field :name, :value => current_user.username %>
 		</div>
-		<div class="field">
-			<%= message.email_field :email, placeholder: 'Email' %>
+		<div class="hidden">
+			<%= message.email_field :email, :value => current_user.email %>
 		</div>
 		<div class="field">
 			<%= message.text_area :content, placeholder: 'Message' %>
