@@ -57,13 +57,18 @@ class ItemsController < ApplicationController
   
   def borrow
     @item = Item.find(params[:item_id])
-    @exchange = Exchange.new
-    @exchange.borrow(current_user.id, @item)
     
-    if @exchange.save
-      flash[:success] = "You are now borrowing #{@item.title}."
-      redirect_to item_path(@item)
-    end
+		if @item.exchange.any? && @item.exchange.last.active?
+			redirect_to item_path(@item)
+		else
+			@exchange = Exchange.new
+			@exchange.borrow(current_user.id, @item)
+
+			if @exchange.save
+				flash[:success] = "You are now borrowing #{@item.title}."
+				redirect_to item_path(@item)
+			end
+		end
   end
 
 
