@@ -1,5 +1,8 @@
 class MessagesController < ApplicationController
   
+	before_action :require_user
+	
+	
 	def new
 		@message = Message.new
   end

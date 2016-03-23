@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.password_reset.subject
   #
-	default :from => "#{current_user.username} <#{current_user.email}>"
+	default :from => "VCOE Inventory <vcoe.inventory@gmail.com>"
 	default :to => "VCOE Inventory <vcoe.inventory@gmail.com>"
 	
 	def password_reset(user)
@@ -15,6 +15,6 @@ class UserMailer < ApplicationMailer
 	
 	def new_message(message)
 		@message = message
-		mail subject: "Message from #{message.name}"
+		mail subject: "VCOE Inventory - Message from #{message.name}"
 	end
 end
