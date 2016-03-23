@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   def borrow
     @item = Item.find(params[:item_id])
     
-		if @item.exchanges.any? && @item.exchange.last.active?
+		if @item.exchanges.any? && @item.exchanges.last.active?
 			redirect_to item_path(@item)
 		else
 			@exchange = Exchange.new
