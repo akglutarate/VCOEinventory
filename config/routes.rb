@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'contact_form/new'
+
+  get 'contact_form/create'
+
   root 'sessions#new'
   
   resources :items do
@@ -19,5 +23,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 	
 	resources :password_resets
+	
+	get 'contact', to: 'messages#new', as: 'contact'
+	post 'contact', to: 'messages#create'
 
 end
