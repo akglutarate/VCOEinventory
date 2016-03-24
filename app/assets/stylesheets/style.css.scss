@@ -61,6 +61,11 @@ hr {
 	margin-top: 10px;
 }
 
+textarea {
+	resize: none;
+	margin-top: 15px;
+}
+
 .right {
 	float: right;
 }
@@ -235,14 +240,6 @@ form.activity {
 	padding: 8px 10px;
 }
 
-/*.show_all:hover {
-	background-color: #fcfcf9;
-}*/
-
-/*.show_all.well:hover {
-	background-color: #f7f7f7;
-}*/
-
 .show_all_title {
 	width: 55%;
 	font-size: 16px;
@@ -328,6 +325,41 @@ form.activity {
 
 .user_email {
 	color: #000;
+}
+
+#ownership .modal-dialog {
+	width: 500px;
+	padding: 15px;
+}
+
+#ownership .modal-footer {
+	text-align: right;
+}
+
+#ownership h3 {
+	margin: 0 0 10px;
+}
+
+#ownership p {
+	padding: 0 0 10px;
+}
+
+#ownership form {
+	margin-top: 0;
+}
+
+#ownership .change_ownership {
+	width: 80%;
+	border-radius: 4px 0 0 4px;
+}
+
+#ownership .cancel {
+	width: 20%;
+	border-radius: 0 4px 4px 0;
+}
+
+.modal-content {
+	padding-bottom: 5px;
 }
 
 
@@ -416,6 +448,21 @@ form.activity {
 	
 	h1.home {
 		width: 100%;
+	}
+	
+	#ownership .modal-dialog,
+	.modal-dialog {
+		width: 300px;
+		left: 50%;
+		margin-left: -150px;
+	}
+	
+	#ownership .change_ownership {
+		width: 68%;
+	}
+	
+	#ownership .cancel {
+		width: 32%;
 	}
 }
 

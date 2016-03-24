@@ -45,9 +45,18 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'View All Items', items_path %></li>
-        <li><%= link_to 'View All Users', users_path if logged_in? %></li>
-        <li><%= link_to 'Create New Item', new_item_path if logged_in? %></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Assessments <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><%= link_to 'Add an Assessment', new_item_path if logged_in? %></li>
+						<li role="separator" class="divider"></li>
+						<li><%= link_to 'View All Assessments', items_path %></li>
+					</ul>
+				</li>
+				
+				<li><%= link_to 'Protocols' if logged_in? %></li>
+				<li><%= link_to 'View Users', users_path if logged_in? %></li>
+				
         <% if logged_in? && current_user.admin? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Admin <span class="caret"></span></a>
@@ -57,11 +66,13 @@
             </ul>
           </li>
         <% end %>
+				
+				<li><%= link_to 'Help/Contact', contact_path if logged_in? %></li>
       </ul>
       
       <%= form_tag items_path, :method => 'get', :enforce_utf8 => false, class: 'navbar-form navbar-right'  do %>
         <div class="input-group">
-        <%= text_field_tag :search, params[:search], :placeholder => 'Search for items...' , class: 'form-control' %>
+					<%= text_field_tag :search, params[:search], :placeholder => 'Search assessments.. ' , class: 'form-control' %>
         <span class="input-group-btn">
           <%= button_tag(type: 'submit', :name => nil, class: "btn btn-default") do %>
             <span class="glyphicon glyphicon-search"></span>

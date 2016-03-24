@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   belongs_to :school
   has_many :exchanges
   
-	validates :title, presence: true, length: { minimum: 3, maximum: 20 }
+	validates :title, presence: true, length: { minimum: 3, maximum: 30 }
   validates :owner_location, :presence => { :message => 'Please select a school.' }
   validates :user_id, presence: true
   
@@ -18,5 +18,5 @@ class Item < ActiveRecord::Base
       self.all
     end
   end
-  
+	
 end

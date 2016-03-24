@@ -11,6 +11,9 @@
             </button>
             <ul class="dropdown-menu">
               <li><%= link_to "Edit #{@item.title}", edit_item_path(@item) %></li>
+							<% if current_user.admin? %>
+								<li><a href="" data-toggle="modal" data-target="#ownership">Change Ownership</a></li>
+							<% end %>
               <li role="separator" class="divider"></li>
               <li><%= link_to "Delete #{@item.title}", item_path(@item), method: :delete, data: { confirm: "Are you sure you want to delete #{@item.title}?" } %></li>
             </ul>
@@ -18,7 +21,7 @@
         <% end %>
         <div class="clear"></div>
         <p>Home Location: <%= @item.owner_location %></p>
-        <p class="meta">Created by: <%= link_to @item.user.username, user_path(@item.user) %></p>
+        <p><small>Owned by: <%= link_to @item.user.username, user_path(@item.user) %></small></p>
         <a href="" class="view_history">View History</a>
         <ul id="exchange_history">
           <hr />
@@ -42,7 +45,7 @@
     <div class="panel panel-default col-sm-3 side">
       <div class="panel-body">
         
-        <%= button_to "Borrow", item_borrow_path(@item.id), class: 'btn btn-success borrow' if !@item.exchanges.any? || !@item.exchanges.last.active? %>
+				<%= button_to "Borrow", item_borrow_path(@item.id), class: 'btn btn-success borrow' if !@item.exchanges.any? || !@item.exchanges.last.active? %>
         <% if @item.exchanges.any? && @item.exchanges.last.user == current_user %>
           <%= button_to "Return", item_return_path(@item.id), class: 'btn btn-warning borrow' if @item.exchanges.last.active? %>
         <% else %>
@@ -60,3 +63,5 @@
   </div>
   
 </div>
+
+<%= render 'ownership' %>

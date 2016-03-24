@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
     
-  before_action :set_item, only: [:edit, :update, :show, :destroy]
+	before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :require_user, except: [:index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
@@ -76,14 +76,24 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:item_id])
     @exchange = @item.exchanges.last
     @exchange.return
-
+		
     if @exchange.save
       flash[:success] = "You have returned #{@item.title}."
       redirect_to item_path(@item)
     end
   end
+	
+	def ownership
+		@item = Item.find(params[:item_id])
+		@item.user_id = params[:ownership]
+		
+		if @item.save
+			flash[:sucess] = "#{@item.title} now belongs to #{@item.user.username}."
+			redirect_to item_path(@item)
+		end
+	end
 
-
+	
 
   private
     def set_item

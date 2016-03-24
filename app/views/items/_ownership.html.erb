@@ -1,0 +1,29 @@
+<div id="ownership" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-body">
+				<h3>Change of Ownership</h3>
+				<p><%= @item.title %> is currently owned by <%= @item.user.username %>.</p>
+				<p>Change ownership to:</p>
+        
+				<%= form_tag item_ownership_path(params[:id]), :method => 'post', :enforce_utf8 => false do %>
+          <div class="form-group">            
+						<%= select_tag(:ownership, options_from_collection_for_select(@user, "id", "username", @item.user.id), 
+													:class => 'form-control') %>
+					</div>
+					<div class="input-group">
+						<div class="input-group-btn">
+							<button type="submit" class="btn btn-success change_ownership">Change Ownership</button>
+							<button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+						</div>
+          </div>
+        <% end %>
+				
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

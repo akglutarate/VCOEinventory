@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :items do
     post :borrow
     post :return
+		post :ownership
   end
   
   resources :users, except: [:new]
