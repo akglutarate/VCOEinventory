@@ -20,22 +20,10 @@
         <div class="panel panel-default show_all">
           <div class="panel-body">
             <div class="left show_all_title"><%= link_to item.title, item_path(item) if logged_in? %><%= item.title if !logged_in? %></div>
-            <% if logged_in? && (item.user == current_user || current_user.admin?) %>
-              <div class="dropdown pull-right">
-                <button class="dropdown-toggle edit_item_dropdown" type="button" data-toggle="dropdown">
-                  Edit <span class="glyphicon glyphicon-cog"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Edit #{item.title}", edit_item_path(item) %></li>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to "Delete #{item.title}", item_path(item), method: :delete, data: { confirm: "Are you sure you want to delete #{item.title}?" } %></li>
-                </ul>
-              </div>
-            <% end %>
+            <% if item.exchanges.any? && item.exchanges.last.active? %> <span class="badge pull-right">Lent out</span> <% end %>
             <div class="clearer"></div>
           <p class="left">
 						<%= item.owner_location %>
-						<% if item.exchanges.any? && item.exchanges.last.active? %> <span class="badge">Lent out</span> <% end %>
 					</p>
           </div>
         </div>
