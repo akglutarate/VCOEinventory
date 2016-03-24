@@ -10,11 +10,16 @@ class UserMailer < ApplicationMailer
 	
 	def password_reset(user)
 		@user = user
-		mail :to => user.email, :subject => 'VCOE Inventory Password Reset'
+		mail :to => user.email, :subject => 'VCOE Inventory - Password Reset'
   end
 	
 	def new_message(message)
 		@message = message
 		mail subject: "VCOE Inventory - Message from #{message.name}"
+	end
+	
+	def return_confirm(item, user)
+		@item = item
+		mail :to => user, :subject => "VCOE Inventory - #{item.title} has been returned."
 	end
 end

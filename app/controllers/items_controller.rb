@@ -78,6 +78,7 @@ class ItemsController < ApplicationController
     @exchange.return
 		
     if @exchange.save
+			UserMailer.return_confirm(@item, @item.user.email).deliver_now
       flash[:success] = "You have returned #{@item.title}."
       redirect_to item_path(@item)
     end
