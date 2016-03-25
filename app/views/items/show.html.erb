@@ -54,7 +54,8 @@
 
         <% if @item.exchanges.any? && @item.exchanges.last.active? %>
           <hr />
-          <p>Lent to <%= link_to @item.exchanges.last.user.username, user_path(@item.exchanges.last.user) %><br />
+          <p>Lent to <%= link_to @item.exchanges.last.user.username, user_path(@item.exchanges.last.user) %>
+						(<%= @item.exchanges.last.user.location %>)<br />
           on <%= @item.exchanges.last.borrowed_time %>.</p>
         <% end %>
       </div>

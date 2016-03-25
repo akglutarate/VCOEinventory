@@ -16,16 +16,20 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new'
   
   resources :schools, except: [:show]
+	
+	resources :password_resets
   
   get 'activity', to: 'activities#index'
+	get 'report', to: 'activities#report'
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 	
-	resources :password_resets
-	
 	get 'contact', to: 'messages#new', as: 'contact'
 	post 'contact', to: 'messages#create'
+	
+	get 'assessment_ownership', to: 'assessment_ownerships#index'
+	post 'assessment_ownership', to: 'assessment_ownerships#update'
 
 end

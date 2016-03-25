@@ -71,7 +71,6 @@ class ItemsController < ApplicationController
 		end
   end
 
-
 	def return
     @item = Item.find(params[:item_id])
     @exchange = @item.exchanges.last
@@ -93,7 +92,7 @@ class ItemsController < ApplicationController
 			redirect_to item_path(@item)
 		end
 	end
-
+	
 	
 
   private
@@ -110,12 +109,5 @@ class ItemsController < ApplicationController
     def exchange_params
       params.require(:exchange).permit(:user_id, :lender, :item_id, :active, :borrowed_time)
     end
-    
-    
-    def require_same_user
-      if current_user != @item.user && !current_user.admin?
-        flash[:danger] = 'You can only edit your own account.'
-        redirect_to root_path
-      end
-    end
+
 end

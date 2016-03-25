@@ -16,8 +16,10 @@ class User < ActiveRecord::Base
             length: { maximum: 40 },
             format: { with: VALID_EMAIL_REGEX }
   
+	validates :location, :presence => { :message => 'Please select a school.' }
 	
   has_secure_password
+	
 	
 	def generate_token(column)
 		begin

@@ -15,5 +15,6 @@ class Exchange < ActiveRecord::Base
     self.active = false
 		self.return_time = Time.zone.now.strftime("%B %e, %Y")
   end
-  
+
+	
 end

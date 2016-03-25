@@ -35,5 +35,7 @@ module App
 		
 		config.action_mailer.default_url_options = { :host => "https://vcoe-inventory.herokuapp.com" }
 		
+		config.time_zone = 'Pacific Time (US & Canada)'
+		
   end
 end

@@ -218,9 +218,16 @@ form {
 }
 
 form.school_filter,
-form.activity {
+form.activity,
+form.save_report {
 	margin-top: 0;
 	margin-bottom: 20px;
+	display: inline-block;
+}
+
+.save_report span {
+	font-size: 12px;
+	margin-left: 5px;
 }
 
 .forgot_password {
@@ -362,6 +369,15 @@ form.activity {
 	padding-bottom: 5px;
 }
 
+.ownership_tag {
+	font-size: 12px;
+	margin: 10px 3px;
+}
+
+.ownership_btn {
+	margin-top: 10px;
+}
+
 
 /* pagination */
 
@@ -485,5 +501,9 @@ form.activity {
 	
 	h1.home {
 		width: 100%;
+	}
+	
+	form.save_report {
+		display: none;
 	}
 }

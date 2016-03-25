@@ -34,6 +34,22 @@
         <%= f.text_field :email, class: "form-control", placeholder: "Enter a valid email" %>
       </div>
     </div>
+	
+		<div class="form-group">
+      <div class="control-label col-sm-4">
+				<%= f.label :location, 'Home Location' %>
+      </div>
+      <div class="col-sm-4">
+        <% if @user.errors[:location].any? %>
+          <ul class="error">
+            <% @user.errors[:location].each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        <% end %>
+				<%= f.select(:location, options_from_collection_for_select(School.all, "name", "name", @user.location), { :include_blank => 'Select a school' }, { :class => 'form-control' }) %>
+      </div>
+    </div>
       
 
     <div class="form-group">

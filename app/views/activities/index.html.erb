@@ -5,17 +5,24 @@
         <h1>Activity</h1>
       </div>
       
-      <%= form_tag activity_path, :method => 'get',:enforce_utf8 => false, class: 'form-inline activity'  do %>
+      <%= form_tag activity_path, :method => 'get', :enforce_utf8 => false, class: 'form-inline activity'  do %>
         <div class="form-group">            
           <button type="submit" value="" class="btn btn-default form-control input-sm">All</button>
           <button type="submit" value="pending_return" class="btn btn-default form-control input-sm" name="view_by">Pending Return</button>
         </div>
       <% end %>
-      
+			<%= form_tag report_path, :method => 'get', :enforce_utf8 => false, class: 'form-inline save_report right'  do %>
+        <div class="form-group">   
+					<%= hidden_field_tag :view_by, params[:view_by] %>
+          <button type="submit" value="" class="btn btn-default form-control input-sm">Save Report <span class="glyphicon glyphicon-file"></span></button>
+        </div>
+      <% end %>
+      <div class="clear"></div>
+			
       <% @exchanges.each do |exchange| %>
-        * <strong><%= exchange.item_title %></strong><br />
+        ** <strong><%= exchange.item_title %></strong> **<br />
         Borrowed: <%= exchange.borrowed_time %>, <%= exchange.user.username %><br />
-        Returned: <%= exchange.return_time %><br />
+        Returned: <%= (exchange.return_time || '____________') %><br />
         =========================<br />
       <% end %>
     </div>
