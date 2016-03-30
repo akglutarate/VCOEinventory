@@ -4,10 +4,10 @@
     <div class="col-sm-6 col-sm-offset-3">
       <% @users.each do |user| %>
         <div class="panel panel-default show_all_users">
-          <div class="panel-body">
+          <div class="panel-body users_index">
             <h2><%= link_to user.username, user_path(user) %></h2>
-            <div class="clear"></div>
             <%= link_to user.email, "mailto:#{user.email}", class: 'user_email' %>
+						<%= user.location %>
           </div>
         </div>
       <% end %>
