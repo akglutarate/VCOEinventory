@@ -50,36 +50,44 @@
 				<%= f.select(:location, options_from_collection_for_select(School.all, "name", "name", @user.location), { :include_blank => 'Select a school' }, { :class => 'form-control' }) %>
       </div>
     </div>
-		
+    
 		<div class="form-group">
-			<div class="control-label col-sm-4">
-				<%= f.label :password %>
-			</div>
-			<div class="col-sm-4">
-				<% if @user.errors[:password].any? %>
-					<ul class="error">
-						<% @user.errors[:password].each do |error| %>
-							<li>*Password <%= error %></li>
-						<% end %>
-					</ul>
-				<% end %>
-				<%= f.password_field :password, :value => '', class: "form-control", placeholder: "Enter a password" %>
+			<div class="col-sm-4 col-sm-offset-4">
+				<a href="#" class="toggle_password">Change Password</a>
 			</div>
 		</div>
-
-		<div class="form-group">
-			<div class="control-label col-sm-4">
-				<%= f.label :password_confirmation, 'Confirm Password' %>
+	
+		<div id="change_password">
+			<div class="form-group">
+				<div class="control-label col-sm-4">
+					<%= f.label :password %>
+				</div>
+				<div class="col-sm-4">
+					<% if @user.errors[:password].any? %>
+						<ul class="error">
+							<% @user.errors[:password].each do |error| %>
+								<li>*Password <%= error %></li>
+							<% end %>
+						</ul>
+					<% end %>
+					<%= f.password_field :password, :value => '', class: "form-control", placeholder: "Enter a password" %>
+				</div>
 			</div>
-			<div class="col-sm-4">
-				<% if @user.errors[:password_confirmation].any? %>
-					<ul class="error">
-						<% @user.errors[:password_confirmation].each do |error| %>
-							<li>*Password <%= error %></li>
-						<% end %>
-					</ul>
-				<% end %>
-				<%= f.password_field :password_confirmation, :value => '', class: "form-control", placeholder: "Confirm password" %>
+
+			<div class="form-group">
+				<div class="control-label col-sm-4">
+					<%= f.label :password_confirmation, 'Confirm Password' %>
+				</div>
+				<div class="col-sm-4">
+					<% if @user.errors[:password_confirmation].any? %>
+						<ul class="error">
+							<% @user.errors[:password_confirmation].each do |error| %>
+								<li>*Password <%= error %></li>
+							<% end %>
+						</ul>
+					<% end %>
+					<%= f.password_field :password_confirmation, :value => '', class: "form-control", placeholder: "Confirm password" %>
+				</div>
 			</div>
 		</div>
 	
