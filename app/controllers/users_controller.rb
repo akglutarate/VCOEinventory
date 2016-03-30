@@ -33,7 +33,8 @@ class UsersController < ApplicationController
   
   
   def update
-    if @user.update(user_params)
+		new_params = user_params.delete_blanks!
+		if @user.update_attributes(new_params)
       flash[:success] = 'You have successfully updated your profile.'
       redirect_to user_path(@user)
     else

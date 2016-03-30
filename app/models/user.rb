@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   
 	validates :location, :presence => { :message => 'Please select a school.' }
 	
-  has_secure_password
+	has_secure_password if: :passowrd
 	
 	
 	def generate_token(column)

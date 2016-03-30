@@ -8,7 +8,7 @@ class ActivitiesController < ApplicationController
 	def report
 		report = [ (params[:view_by] || "") + "\n", 
 			"Report generated on " + Time.zone.now.to_s + "\n", 
-							"-----------------------------------------\n\n" ]
+			"-----------------------------------------\n\n" ]
 		
 		@exchanges.each do |exchange|
 			report.push("** " + exchange.item_title + " **\n")
