@@ -9,7 +9,7 @@
     
         <%= form_tag items_path, :method => 'get',:enforce_utf8 => false, class: 'form-inline school_filter'  do %>
           <div class="form-group">            
-            <%= select_tag(:filter, options_from_collection_for_select(@schools, "name", "name", params[:filter]), :prompt => 'Filter by school', class: 'form-control input-sm') %>
+						<%= select_tag(:filter, options_from_collection_for_select(@schools.where.not(name: 'Administration'), 'name', 'name', params[:filter]), :prompt => 'Filter by school', class: 'form-control input-sm') %>
             <button type="submit" class="btn btn-default form-control input-sm">Filter</button>
           </div>
         <% end %>
