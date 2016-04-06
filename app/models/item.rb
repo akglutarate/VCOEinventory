@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
     
   belongs_to :user
   belongs_to :school
+	belongs_to :protocol
   has_many :exchanges
   
 	validates :title, presence: true, length: { minimum: 3, maximum: 40 }

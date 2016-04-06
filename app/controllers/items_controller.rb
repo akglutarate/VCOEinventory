@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+		
     if @item.save
      flash[:success] = 'You have successfully created a new item.'
      redirect_to item_path(@item)
@@ -109,5 +110,11 @@ class ItemsController < ApplicationController
     def exchange_params
       params.require(:exchange).permit(:user_id, :lender, :item_id, :active, :borrowed_time)
     end
-
+	
+		def require_same_user
+			if current_user != @item.user && !current_user.admin?
+				flash[:danger] = 'You can only edit your own account.'
+				redirect_to root_path
+			end
+		end
 end
