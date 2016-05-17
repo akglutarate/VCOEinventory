@@ -28,7 +28,7 @@ module App
 			:port => "587",
 			:domain => "gmail.com",
 			:user_name => "vcoe.inventory@gmail.com",
-			:password => "VCEducation",
+			:password => "VCoe.invent!",
 			:authentication => "plain",
 			:enable_starttls_auto => true
 		}

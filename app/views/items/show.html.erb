@@ -24,11 +24,11 @@
         <p><small>Owned by: <%= link_to @item.user.username, user_path(@item.user) %></small></p>
         <a href="" class="view_history">View History</a>
         <ul id="exchange_history">
-          <hr />
+          <hr>
           <% if @exchanges.any? %>
             <% @exchanges.each do |exchange| %>
               <li>
-                Borrowed by <%= exchange.user.username %> on <%= exchange.borrowed_time %> <br />
+                Borrowed by <%= exchange.user.username %> on <%= exchange.borrowed_time %> <br>
                 <% if exchange.active == false %>
                   Returned <%= exchange.return_time %>.
                 <% end %>
@@ -53,11 +53,16 @@
         <% end %>
 
         <% if @item.exchanges.any? && @item.exchanges.last.active? %>
-          <hr />
+          <hr>
           <p>Lent to <%= link_to @item.exchanges.last.user.username, user_path(@item.exchanges.last.user) %>
-						(<%= @item.exchanges.last.user.location %>)<br />
+						(<%= @item.exchanges.last.user.location %>)<br>
           on <%= @item.exchanges.last.borrowed_time %>.</p>
         <% end %>
+        
+        <!--
+        <hr>
+				<a href="" data-toggle="modal" data-target="#request">Request <%= @item.title %></a>
+     		-->
       </div>
     </div>
     

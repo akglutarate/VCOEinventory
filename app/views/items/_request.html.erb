@@ -1,0 +1,39 @@
+<div id="request" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-body">
+				<h3>Request Assessment</h3>
+				
+				<%= form_for @message, url: contact_path do |message| %>
+			
+					<div class="hidden">
+						<%= message.text_field :name, :value => current_user.username %>
+					</div>
+					<div class="hidden">
+						<%= message.email_field :email, :value => current_user.email %>
+					</div>
+
+					<div class="control-label col-sm-6 col-sm-offset-3">
+						<strong>From : </strong><%= current_user.username %><br />
+						<strong>Subject : </strong>VCOE Inventory - Message from <%= current_user.username %>
+					</div>
+
+					<div class="form-group">
+						<div class="control-label col-sm-6 col-sm-offset-3">
+							<%= message.text_area :content, placeholder: 'Questions? Send a message.', rows: '5', class: 'form-control' %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-6">
+							<br />
+							<%= submit_tag 'Send Message', class: 'btn btn-success btn-lg item_submit' %>
+						</div>
+					</div> 
+				<% end %>
+				
+      </div>
+    </div>
+
+  </div>
+</div>

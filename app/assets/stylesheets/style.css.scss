@@ -334,7 +334,8 @@ form.save_report {
 	color: #000;
 }
 
-#ownership .modal-dialog {
+#ownership .modal-dialog,
+#add .modal-dialog{
 	width: 500px;
 	padding: 15px;
 }
@@ -343,7 +344,8 @@ form.save_report {
 	text-align: right;
 }
 
-#ownership h3 {
+#ownership h3,
+#add h3 {
 	margin: 0 0 10px;
 }
 
@@ -351,7 +353,8 @@ form.save_report {
 	padding: 0 0 10px;
 }
 
-#ownership form {
+#ownership form,
+#add fomr {
 	margin-top: 0;
 }
 
@@ -360,8 +363,18 @@ form.save_report {
 	border-radius: 4px 0 0 4px;
 }
 
+#add .add_protocols {
+  width: 70%;
+	border-radius: 4px 0 0 4px;
+}
+
 #ownership .cancel {
 	width: 20%;
+	border-radius: 0 4px 4px 0;
+}
+
+#add .cancel {
+  width: 30%;
 	border-radius: 0 4px 4px 0;
 }
 
@@ -414,6 +427,16 @@ form.save_report {
 	visibility: hidden;
 	padding: 10px;
 }
+
+
+/* request modal */
+
+#request {
+	.modal-dialog {
+		width: 500px;
+	}
+}
+
 
 
 /* delete confirmation */

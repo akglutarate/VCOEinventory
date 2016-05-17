@@ -22,4 +22,8 @@ class UserMailer < ApplicationMailer
 		@item = item
 		mail :to => user, :subject => "VCOE Inventory - #{item.title} has been returned."
 	end
+	
+	def item_request
+		
+	end
 end

@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
     
-	before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
+	before_action :set_item_from_parent, only: [:borrow, :return, :ownership, :seek]
   before_action :require_user, except: [:index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
@@ -18,11 +19,14 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    #@protocol = Protocol.find_or_create_by(name: @item.title)
     @item.user = current_user
-		
-    if @item.save
-     flash[:success] = 'You have successfully created a new item.'
-     redirect_to item_path(@item)
+    #@item.protocol_id = @protocol.id
+    #@protocol.name = @item.title
+  
+    if @item.save #&& @protocol.save
+      flash[:success] = 'You have successfully created a new item.'
+      redirect_to item_path(@item)
     else
       render 'new'
     end
@@ -34,9 +38,11 @@ class ItemsController < ApplicationController
 
 
   def update
+    #@item.reload_protocol(params[:item][:title])
+    
     if @item.update(item_params)
-     flash[:success] = "You have successfully updated #{@item.title}."
-     redirect_to item_path(@item)
+      flash[:success] = "You have successfully updated #{@item.title}."
+      redirect_to item_path(@item)
     else
       render 'edit'
     end
@@ -57,43 +63,44 @@ class ItemsController < ApplicationController
 
   
   def borrow
-    @item = Item.find(params[:item_id])
-    
-		if @item.exchanges.any? && @item.exchanges.last.active?
-			redirect_to item_path(@item)
-		else
-			@exchange = Exchange.new
-			@exchange.borrow(current_user.id, @item)
+    if @item.exchanges.any? && @item.exchanges.last.active?
+      redirect_to item_path(@item)
+    else
+      @exchange = Exchange.new
+      @exchange.borrow(current_user.id, @item)
 
-			if @exchange.save
-				flash[:success] = "You are now borrowing #{@item.title}."
-				redirect_to item_path(@item)
-			end
-		end
+      if @exchange.save
+        flash[:success] = "You are now borrowing #{@item.title}."
+        redirect_to item_path(@item)
+      end
+    end
   end
 
-	def return
-    @item = Item.find(params[:item_id])
+  def return
     @exchange = @item.exchanges.last
     @exchange.return
 		
     if @exchange.save
-			UserMailer.return_confirm(@item, @item.user.email).deliver_now
+      UserMailer.return_confirm(@item, @item.user.email).deliver_now
       flash[:success] = "You have returned #{@item.title}."
       redirect_to item_path(@item)
     end
   end
 	
 	def ownership
-		@item = Item.find(params[:item_id])
 		@item.user_id = params[:ownership]
-		
+
 		if @item.save
 			flash[:sucess] = "#{@item.title} now belongs to #{@item.user.username}."
 			redirect_to item_path(@item)
 		end
 	end
 	
+	def seek
+		#UserMailer.item_request(@item, @item.user.email).deliver_now
+		#flash[:success] = "You have returned #{@item.title}."
+		#redirect_to item_path(@item)
+	end
 	
 
   private
@@ -101,6 +108,9 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
   
+		def set_item_from_parent
+			@item = Item.find(params[:item_id])
+		end	
   
     def item_params
       params.require(:item).permit(:title, :owner_location)
@@ -111,10 +121,10 @@ class ItemsController < ApplicationController
       params.require(:exchange).permit(:user_id, :lender, :item_id, :active, :borrowed_time)
     end
 	
-		def require_same_user
-			if current_user != @item.user && !current_user.admin?
-				flash[:danger] = 'You can only edit your own account.'
-				redirect_to root_path
-			end
-		end
+    def require_same_user
+      if current_user != @item.user && !current_user.admin?
+        flash[:danger] = 'You can only edit your own account.'
+        redirect_to root_path
+      end
+    end
 end

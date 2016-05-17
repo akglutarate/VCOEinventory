@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel panel-default col-sm-6 col-sm-offset-3">
+      <div class="panel-body">
+        <h1><%= @protocol.name %></h1>
+        <h3>Total <%= @protocol.name %>: <%= @protocol.amount || '0' %></h3>
+        <hr />
+        <a href="" data-toggle="modal" data-target="#add">Add Protocols</a>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'add' %>

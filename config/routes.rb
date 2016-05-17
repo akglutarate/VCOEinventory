@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post :borrow
     post :return
 		post :ownership
+		post :seek
   end
   
   resources :users, except: [:new]
@@ -18,6 +19,11 @@ Rails.application.routes.draw do
   resources :schools, except: [:show]
 	
 	resources :password_resets
+  
+  resources :protocols, only: [:index, :show] do
+    post :add
+    post :update_value
+  end
   
   get 'activity', to: 'activities#index'
 	get 'report', to: 'activities#report'
