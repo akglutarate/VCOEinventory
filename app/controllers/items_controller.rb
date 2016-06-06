@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.search(params[:search], params[:filter]).paginate(page: params[:page], per_page: 10).order('title ASC')
+		@items = Item.search(params[:search], params[:filter], params[:category]).paginate(page: params[:page], per_page: 10).order('title ASC')
     @schools = School.all
   end
 
@@ -18,11 +18,12 @@ class ItemsController < ApplicationController
 
 
   def create
-    @item = Item.new(item_params)
-    #@protocol = Protocol.find_or_create_by(name: @item.title)
-    @item.user = current_user
-    #@item.protocol_id = @protocol.id
+		#@protocol = Protocol.find_or_create_by(name: @item.title)
+		#@item.protocol_id = @protocol.id
     #@protocol.name = @item.title
+		
+    @item = Item.new(item_params)
+    @item.user = current_user
   
     if @item.save #&& @protocol.save
       flash[:success] = 'You have successfully created a new item.'
@@ -113,7 +114,7 @@ class ItemsController < ApplicationController
 		end	
   
     def item_params
-      params.require(:item).permit(:title, :owner_location)
+			params.require(:item).permit(:title, :owner_location, :category)
     end
     
     

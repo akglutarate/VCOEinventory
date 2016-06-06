@@ -12,7 +12,7 @@
             <% end %>
           </ul>
         <% end %>
-				<%= f.text_field :title, class: "form-control", placeholder: "Enter an assessment name", autofocus: true %>
+				<%= f.text_field :title, class: "form-control", placeholder: "Enter an item name", autofocus: true %>
       </div>
     </div>
     <div class="form-group">
@@ -27,7 +27,22 @@
             <% end %>
           </ul>
         <% end %>
-				<%= f.collection_select :owner_location, School.where.not(name: 'Administration'), :name, :name, { include_blank: 'Select a school' }, { class: 'form-control' } %>
+				<%= f.collection_select :owner_location, School.where.not(name: 'Administration'), :name, :name, { include_blank: 'Select a School' }, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label col-sm-3">
+				<%= f.label :category, 'Category' %>
+      </div>
+      <div class="col-sm-6">
+				<% if @item.errors[:category].any? %>
+          <ul class="error">
+						<% @item.errors[:category].each do |error| %>
+              <li>*<%= error %></li>
+            <% end %>
+          </ul>
+        <% end %>
+				<%= f.select :category, ['Assessments', 'Manuals', 'Curriculum', 'Books'], { include_blank: 'Select a Category' }, { class: 'form-control' } %>
       </div>
     </div>
     <div class="form-group">

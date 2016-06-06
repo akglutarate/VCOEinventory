@@ -21,7 +21,10 @@
         <% end %>
         <div class="clear"></div>
         <p>Home Location: <%= @item.owner_location %></p>
-        <p><small>Owned by: <%= link_to @item.user.username, user_path(@item.user) %></small></p>
+        <p>Owned by: <%= link_to @item.user.username, user_path(@item.user) %></p>
+				<% if @item.category %>
+					<p>Category: <%= @item.category %></p>
+				<% end %>
         <a href="" class="view_history">View History</a>
         <ul id="exchange_history">
           <hr>
