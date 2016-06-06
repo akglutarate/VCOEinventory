@@ -61,7 +61,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Admin <span class="caret"></span></a>
             <ul class="dropdown-menu">
-							<li><%= link_to 'Assessment Ownership', assessment_ownership_path %></li>
+							<li><%= link_to 'Item Ownership', assessment_ownership_path %></li>
               <li><%= link_to 'Schools', schools_path %></li>
               <li><%= link_to 'Activity', activity_path %></li>
             </ul>
@@ -73,7 +73,7 @@
       
       <%= form_tag items_path, :method => 'get', :enforce_utf8 => false, class: 'navbar-form navbar-right'  do %>
         <div class="input-group">
-					<%= text_field_tag :search, params[:search], :placeholder => 'Search assessments.. ' , class: 'form-control' %>
+					<%= text_field_tag :search, params[:search], :placeholder => 'Search items.. ' , class: 'form-control' %>
         <span class="input-group-btn">
           <%= button_tag(type: 'submit', :name => nil, class: "btn btn-default") do %>
             <span class="glyphicon glyphicon-search"></span>
