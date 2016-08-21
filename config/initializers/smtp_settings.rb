@@ -4,6 +4,6 @@ ActionMailer::Base.smtp_settings = {
     :domain => "gmail.com",
 		:user_name => "vcoe.inventory@gmail.com",
 		:password => "VCoe.invent!",
-    :authentication => "plain",
+    :authentication => "login",
     :enable_starttls_auto => true
 }
