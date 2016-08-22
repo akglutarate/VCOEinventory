@@ -37,7 +37,7 @@
 			var email    = $('email');
 			var pwRegex  = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i;
 
-			if (pwRegex.test(email)) $('#loader_background').css('display', 'block');
+			if (pwRegex.test(email.value)) $('#loader_background').css('display', 'block');
 		});
 	});
 </script>
