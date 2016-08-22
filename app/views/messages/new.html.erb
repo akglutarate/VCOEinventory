@@ -20,6 +20,7 @@
 		
 			<div class="form-group">
 				<div class="control-label col-sm-6 col-sm-offset-3">
+					<span class="email_error_message contact">*Please enter a message.</span><br>
 					<%= message.text_area :content, placeholder: 'Questions? Send a message.', rows: '5', class: 'form-control' %>
 				</div>
 			</div>
@@ -33,3 +34,30 @@
 		
   </div>
 </div>
+
+<div id="loader_background">
+	<div class="loader">Loading...</div>			
+</div>
+
+<script>
+  jQuery(function($) 
+	{
+		$('#new_message').submit(function (e) 
+		{
+			e.preventDefault();
+			
+			if ($('#message_content').val()) 
+			{
+				$('#loader_background').css('display', 'block');
+				$('.email_error_message').css('display', 'none');
+				$('#message_content').css('border-color', '');
+				this.submit();
+			}
+			else
+			{
+				$('.email_error_message').css('display', 'inline');
+				$('#message_content').css('border-color', '#c51515');
+			}
+		});
+	});
+</script>

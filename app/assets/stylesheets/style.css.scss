@@ -467,6 +467,21 @@ form.category {
 
 
 
+/* email error */
+.email_error_message {
+	display: none;
+	margin: 0;
+	padding: 0;
+	color: #c51515;
+	font-size: 11px;
+	position: absolute;
+}
+
+.email_error_message.contact {
+	top: 10px;
+}
+
+
 /* email loader */
 #loader_background {
 	display: none;
@@ -479,7 +494,7 @@ form.category {
 }
 
 .loader {
-	margin: 200px auto;
+	margin: 250px auto;
 	font-size: 10px;
 	width: 1em;
 	height: 1em;
