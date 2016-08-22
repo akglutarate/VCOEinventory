@@ -15,10 +15,29 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
-					<%= submit_tag 'Reset Password', class: 'btn btn-success btn-lg item_submit' %>
+					<%= submit_tag 'Reset Password', class: 'btn btn-success btn-lg item_submit', id: 'reset_pw_button' %>
 				</div>
 			</div> 
 		<% end %>
 		
   </div>
 </div>
+
+<div id="loader_background">
+	<div class="loader">Loading...</div>			
+</div>
+
+
+<script>
+  jQuery(function($) 
+	{
+		var pwButton = $('#reset_pw_button');
+		pwButton.click(function () 
+		{
+			var email    = $('email');
+			var pwRegex  = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i;
+
+			if (pwRegex.test(email)) $('#loader_background').css('display', 'block');
+		});
+	});
+</script>
